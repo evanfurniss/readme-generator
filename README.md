@@ -48,3 +48,5 @@
   Video example: https://drive.google.com/file/d/1jJfuFMUMM436FAO48XqeubRhNExUMbA0/view
   
   Repo link: https://github.com/evanfurniss/readme-generator
+
+  ![Working MVP gif](./util/ex.gif)
