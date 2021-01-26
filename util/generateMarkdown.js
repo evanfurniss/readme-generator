@@ -1,17 +1,5 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// Identifies which license type and returns a badge with the specified license type
 function renderLicenseBadge(license) {
-  let link = renderLicenseLink(license);
-  let licenseDescription = renderLicenseSection(license);
-
-  return `![${license} license tag](${link})
-  
-  ${license} Description: ${licenseDescription}`;
-}
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {
   if (license === "MIT") {
     return "https://img.shields.io/badge/license-MIT-blue";
   }
@@ -23,9 +11,8 @@ function renderLicenseLink(license) {
   };
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {
+// Links to the explained license type
+function renderLicenseLink(license) {
   if (license != "") {
     return `https://opensource.org/licenses/${license}`;
   }
@@ -34,9 +21,21 @@ function renderLicenseSection(license) {
   };
 }
 
-// TODO: Create a function to generate markdown for README
+// Creates license section for README
+function renderLicenseSection(license) {
+  let link = renderLicensebadge(license);
+  let license = renderLicenseLink(license);
+
+  return `![${license} license tag](${link})
+  ${license} Description: ${licenseDescription}`;
+}
+
+// Creates the structure of the README
 function generateMarkdown(data) {
   return `# ${data.title}
+
+  ## Table of Contents
+  
   * [Installation](#installation)
   * [Usage](#usage)
   * [Contribution](#contribution)

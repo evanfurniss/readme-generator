@@ -33,33 +33,32 @@ const questions = [
     },
     {
         type: "list",
-        message: "What license would you like to use? (use arrow keys to navigate)",
+        message: "What license would you like to use?",
         name: "license",
         choices: ['GPL-3.0','MIT','Apache-2.0'],
     },
     {
         type: "input",
         message: "How can others contribute to this project, if applicable?",
-        name: "contributors",
-        default: "Contributors",
+        name: "contributors"
     },
     {
         type: "input",
         message: "What tests were written for this README, if any?",
         name: "test",
-        default: "Testing",
+        default: "none"
     },
     {
         type: "input",
         message: "Please input your GitHub username",
         name: "git",
-        default: "evanfurniss",
+        default: "evanfurniss"
     },
     {
         type: "input",
         message: "Please enter your email",
         name: "email",
-        default: "evanfurniss@gmail.com",
+        default: "evanfurniss@gmail.com"
     }
 ];
 
