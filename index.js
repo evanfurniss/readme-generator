@@ -14,7 +14,7 @@ const questions = [
     },
     {
         type: "input",
-        message: "How would you describe this project?",
+        message: "What is the project description?",
         name: "description",
         default: "Description",
         validate: (answer) => (answer.length < 1) ? console.log("Input required") : true
@@ -63,11 +63,15 @@ const questions = [
     }
 ];
 
-inquire .prompt(
-    questions
-)
-.then((response) => {
-    const markdown = generateMarkdown(response);
-    
+inquire .prompt(questions)
+
+.then((response) => writeToFile(response));
+
+function writeToFile(data) {
+    fs.writeFile(`${data.title}.md`, generateMarkdown(data), (err) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log("Success!");
+    })
 }
-);
