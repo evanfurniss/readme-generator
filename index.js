@@ -68,7 +68,7 @@ inquire .prompt(questions)
 .then((response) => writeToFile(response));
 
 function writeToFile(data) {
-    fs.writeFile(`${data.title}.md`, generateMarkdown(data), (err) => {
+    fs.writeFile("README.md", generateMarkdown(data), (err) => {
         if (err) {
             console.log(err);
         }
