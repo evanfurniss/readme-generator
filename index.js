@@ -28,7 +28,7 @@ const questions = [
         type: "list",
         message: "What license would you like to use? (use arrow keys to navigate)",
         name: "license",
-        choices: "[]"
+        choices: ['GNU','MIT','Apache', 'Default']
     },
     {
         type: "input",
@@ -44,14 +44,76 @@ const questions = [
         type: "input",
         message: "Where can people go to ask questions about this project?",
         name: "questions"
+    },
+    {
+        type: "input",
+        message: "Please input your GitHub username",
+        name: "git"
+    },
+    {
+        type: "input",
+        message: "Please enter your email",
+        name: "email"
+    },
+    {
+        type: "input",
+        message: "Please enter your LinkedIn username",
+        name: "linkedin"
     }
 ];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+inquire .prompt(
+    questions
+)
+.then(({
+    title,
+    description,
+    installation,
+    usage,
+    license,
+    contributors,
+    test,
+    questions,
+    git,
+    email,
+    linkedin
+}) => {
+    const format = `# ${title}
 
-// TODO: Create a function to initialize app
-function init() {}
+    * [Installation](#installation)
+    * [Usage](#usage)
+    * [Contribution](#contribution)
+    * [License](#license)
+    
+    # Installation
+    ${installation}
+    ## Usage
+    ${usage}
+    ## Description
+    ${description}
+    ## Contribution
+    ${contributors}
+    ## License
+    ${license}
+    ## Tests
+    ${test}
+    ## Questions
+    ${questions}
 
-// Function call to initialize app
-init();
+    # Contact
+    * GitHub: ${git}
+    * LinkedIn: ${linkedin}
+    * Email: ${email}`
+    
+    createReadme (title, format);
+}
+);
+
+function createReadme (title, data) {
+    fs.writeFile(`./${title}.md`,data, (err) =>{
+        if (err){
+            console.log(err);
+        }
+        console.log("README created!");
+    });
+};
