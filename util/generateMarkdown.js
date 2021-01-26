@@ -23,19 +23,22 @@ function renderLicenseLink(license) {
 
 // Creates license section for README
 function renderLicenseSection(license) {
-  let link = renderLicensebadge(license);
-  let license = renderLicenseLink(license);
+  let link = renderLicenseBadge(license);
+  let licenseDef = renderLicenseLink(license);
 
-  return `![${license} license tag](${link})
-  ${license} Description: ${licenseDescription}`;
+  return `![${licenseDef} license tag](${link})
+  
+  Description: ${licenseDef}`;
 }
 
 // Creates the structure of the README
 function generateMarkdown(data) {
+  // README template literal, the contents of the README.md
   return `# ${data.title}
+  ![${data.license} License Badge](${renderLicenseBadge(data.license)})
 
   ## Table of Contents
-  
+
   * [Installation](#installation)
   * [Usage](#usage)
   * [Contribution](#contribution)
@@ -59,7 +62,7 @@ function generateMarkdown(data) {
 
   ## License
 
-  ${renderLicenseBadge(data.license)}
+  ${renderLicenseSection(data.license)}
 
   ## Tests
 
@@ -67,14 +70,14 @@ function generateMarkdown(data) {
 
   ## Questions
 
-  Questions can be asked by following the below links to message, email, or 
-  push into the repo.
+  Questions can be asked by following the links below to message me on LinkedIn or email.
 
   # Contact
-  * GitHub: ${data.git}
+  * GitHub: https://github.com/${data.git}
   * LinkedIn: ${data.linkedin}
   * Email: ${data.email}`
 ;
 }
 
+// Allow this module to be used on separate JS file.
 module.exports = generateMarkdown;
